@@ -32,10 +32,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  bool _happy = false;
 
   void _incrementCounter() {
     setState(() {
       _counter++;
+    });
+  }
+
+  void onPressed() {
+    setState(() {
+      _happy = true;
     });
   }
 
@@ -57,13 +64,22 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Text('Pet happy:'),
+            Text(
+              '$_happy',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            FloatingActionButton(
+              onPressed: onPressed,
+              child: const Icon(Icons.thumb_up_sharp)
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Play',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.play_arrow),
       ),
     );
   }
